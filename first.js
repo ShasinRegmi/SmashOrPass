@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add event listeners to all Smash buttons
     smashButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Get the parent item containing the image
+            
             const item = button.closest('.item');
 
             // Get the image src and update votes object
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
             votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
             votes[imgSrc].smash++;
 
-            // Update UI (e.g., display the updated vote count)
+            
             updateUI(imgSrc);
         });
     });
@@ -33,17 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
             votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
             votes[imgSrc].pass++;
 
-            // Update UI (e.g., display the updated vote count)
+           
             updateUI(imgSrc);
         });
     });
 
-    // Function to update UI (e.g., display the vote count for a specific image)
+
     function updateUI(imgSrc) {
         const item = document.querySelector(`img[src="${imgSrc}"]`).closest('.item');
         const voteDisplay = item.querySelector('.vote-display');
 
-        // If vote display element doesn't exist, create one
+        
         if (!voteDisplay) {
             const newVoteDisplay = document.createElement('div');
             newVoteDisplay.classList.add('vote-display');
