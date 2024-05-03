@@ -5,30 +5,54 @@ body, html {
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    height: 100vh;
+    width: 70%;
+    margin: auto;
     text-align: center;
+    
 }
+
 
 h1 {
     margin-top: 50px;
 }
 
 .content {
+    /* width: 70%; */
+    margin: auto;
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+ 
 }
 
 .item {
+    width: 70%;
+    margin: auto;
     margin: 20px;
+
 }
 
-.item img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+.item>img {
+    width: 50%;
+    height: 50%;
+    /* border-radius: 50%; */
+}
+
+.button-group{
+    /* display:flex;
+    flex-direction: row; */
+    width: 50%;
+    margin: auto;
+    /* justify-content: center; */
+   
+}
+
+button{
+    font-size: 1.5em;
 }
 
 .smash-btn, .pass-btn {
@@ -36,6 +60,16 @@ h1 {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+}
+
+.next-btn{
+    margin-top: 20px;
+    border-radius: 0%;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 30%;
+    margin: auto;
+    font-size: 1.5em;
 }
 
 .smash-btn {
@@ -48,14 +82,46 @@ h1 {
     color: white;
 }
 
+
 .smash-btn:hover,.smash-btn:active {
   color: black;
   background-color: #c9ff8c;
-  font-size: 150%;
+  font-size: 200%;
 }
-.pass-btn:hover,.passbtn:active 
+
+.pass-btn:hover,.pass-btn:active 
  {
   color: black;
-  background-color: #defc8d;
-   font-size: 150%;
+  background-color: #ea6060;
+    font-size: 200%;
 }
+
+.next-btn:hover,.next-btn:active 
+ {
+  color: black;
+  background-color: #4db7f9;
+   font-size: 200%;
+}
+
+.vote-display{
+    font-size: 1.5em;
+    background-color: antiquewhite;
+    margin-top: 20px;
+    padding: 20px;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.smash-display{
+
+}
+
+.pass-display{
+
+}
+
+
+.hide{
+    display: none;
+}
+
