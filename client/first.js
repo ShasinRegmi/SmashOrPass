@@ -1,108 +1,52 @@
-let imgCount = 1 ;
+let imgCount = 1;
+let votes = {};
+
 document.addEventListener("DOMContentLoaded", function() {
+    const smashButtons = document.querySelectorAll('.smash-btn');
+    const passButtons = document.querySelectorAll('.pass-btn');
+    const nextButton = document.querySelector('.next-btn');
 
-    // Initialize votes object to store votes for each image
-    const votes = {};
+    smashButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const img = document.querySelector('.img');
+            const imgSrc = img.src;
+            votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
+            votes[imgSrc].smash++;
 
-    // Get all Smash and Pass buttons
-    const smashButtons = document.querySelector('.smash-btn');
-    const passButtons = document.querySelector('.pass-btn');
+            updateUI(imgSrc);
+            nextButton.classList.remove('hide');
+        });
+    });
 
-    // Add event listeners to all Smash buttons
-    // smashButtons.forEach(button => {
-    //     button.addEventListener('click', function() {
-            
-    //         const item = button.closest('.item');
+    passButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const img = document.querySelector('.img');
+            const imgSrc = img.src;
+            votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
+            votes[imgSrc].pass++;
 
-    //         // Get the image src and update votes object
-    //         const imgSrc = item.querySelector('img').src;
-    //         votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
-    //         votes[imgSrc].smash++;
+            updateUI(imgSrc);
+            nextButton.classList.remove('hide');
+        });
+    });
 
-            
-    //         updateUI(imgSrc);
-    //     });
-    // });
+    nextButton.addEventListener('click', changeImage);
+});
 
-    smashButtons.addEventListener('click', function(){
-        document.querySelector('.next-btn').classList.remove('hide');
-         const img = document.querySelector('.img');
-         const imgSrc = img.src;
-         votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
-         votes[imgSrc].smash++;
+function updateUI(imgSrc) {
+    const item = document.querySelector('.item');
+    const voteDisplay = item.querySelector('.vote-display');
 
-        //  smashButtons.classList.add('test');
-        
-         updateUI(imgSrc);
-        
-    })
-
-    passButtons.addEventListener('click', function(){
-        document.querySelector('.next-btn').classList.remove('hide');
-        const img = document.querySelector('.img');
-        const imgSrc = img.src;
-        votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
-        votes[imgSrc].pass++;
-
-        
-        updateUI(imgSrc);
-        
-    })
-
-   
-
-    // // Add event listeners to all Pass buttons
-    // passButtons.forEach(button => {
-    //     button.addEventListener('click', function() {
-    //         // Get the parent item containing the image
-    //         const item = button.closest('.item');
-
-    //         // Get the image src and update votes object
-    //         const imgSrc = item.querySelector('img').src;
-    //         votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
-    //         votes[imgSrc].pass++;
-
-           
-    //         updateUI(imgSrc);
-    //     });
-    // });
-
-
-    function updateUI(imgSrc) {
-        
-        const item = document.querySelector('.item');
-        const voteDisplay = item.querySelector('.vote-display');
-        // const smashDisplay = voteDisplay.querySelector('.smash-display');
-        // const passDisplay = voteDisplay.querySelector('.pass-display');
-
-        
-        if (!voteDisplay) {
-            const newVoteDisplay = document.createElement('div');
-            newVoteDisplay.classList.add('vote-display');
-
-            // const newSmashDisplay = document.createElement('div');
-            // newSmashDisplay.classList.add('smash-display');
-            // newVoteDisplay.appendChild(newSmashDisplay);
-
-            // const newPassDisplay = document.createElement('div');
-            // newPassDisplay.classList.add('pass-display');
-            // newVoteDisplay.appendChild(newPassDisplay);
-
-            item.appendChild(newVoteDisplay);
-            voteDisplay = newVoteDisplay;
-        }
-       
-
-        // Update vote display with the current vote count
-        // smashDisplay.textContent = `Smash: ${votes[imgSrc].smash}`;
-        // passDisplay.textContent = `Pass: ${votes[imgSrc].pass}`;
-        voteDisplay.textContent = `Smash: ${votes[imgSrc].smash}, Pass: ${votes[imgSrc].pass}`;
-        voteDisplay.classList.remove('hide');
-        
+    if (!voteDisplay) {
+        const newVoteDisplay = document.createElement('div');
+        newVoteDisplay.classList.add('vote-display');
+        item.appendChild(newVoteDisplay);
+        voteDisplay = newVoteDisplay;
     }
 
-   
-});
+    voteDisplay.textContent = `Smash: ${votes[imgSrc].smash}, Pass: ${votes[imgSrc].pass}`;
+    voteDisplay.classList.remove('hide');
+}
 
 function changeImage(){
     document.querySelector('.next-btn').classList.add('hide');
