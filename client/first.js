@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             votes[imgSrc].smash++;
 
             updateUI(imgSrc);
-            nextButton.classList.remove('hide');
+            nextButton.classList.remove('hide');.
         });
     });
 
