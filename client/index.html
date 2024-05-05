@@ -4,32 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smash or Pass</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <div class="container">
         <h1>Smash or Pass</h1>
         <div class="content">
             <div class="item">
-                <img src="./car-1.jpg" alt="Image 1" class = "responsive img">
+                <img src="./car-1.jpg" alt="Image 1" class="responsive img">
                 <div class="button-group">
-                    <button class="smash-btn">Smash</button>
-                    <button class="pass-btn">Pass</button>
+                    <button class="smash-btn" id="smash-btn">Smash</button>
+                    <button class="pass-btn" id="pass-btn">Pass</button>
                 </div>
             </div>
-            <!-- <div class="item">
-                <img src="image2.jpg" alt="Image 2">
-                <div class="button-group">
-                    <button class="smash-btn">Smash</button>
-                    <button class="pass-btn">Pass</button>
-                </div>
-            </div> -->
+            <!-- add -->
             
-            <button class="next-btn hide" onclick="changeImage()">Next</button>
+            <button class="next-btn hide" id="next-btn" onclick="changeImage()">Next</button>
         </div>
         
     </div>
     <script src="first.js"></script>
-
 </body>
 </html>
