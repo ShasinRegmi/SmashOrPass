@@ -1,4 +1,4 @@
-let imgCount = 1;
+let imgCount = 2;
 let votes = {};
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    nextButton.addEventListener('click', changeImage);
+
 });
 
 function updateUI(imgSrc) {
