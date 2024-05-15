@@ -1,4 +1,3 @@
-let imgCount = 2;
 let votes = {};
 let tempImageIndex = 0;
 let images = [
