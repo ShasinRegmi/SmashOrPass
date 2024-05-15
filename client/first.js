@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
             nextButton.classList.remove('hide');
         });
     });
-
 });
 
 function updateUI(imgSrc) {
