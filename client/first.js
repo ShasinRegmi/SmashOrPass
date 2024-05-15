@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function updateUI(imgSrc) {
     const item = document.querySelector('.item');
-    const voteDisplay = item.querySelector('.vote-display');
+    let voteDisplay = item.querySelector('.vote-display');
 
     if (!voteDisplay) {
         const newVoteDisplay = document.createElement('div');
