@@ -1,10 +1,18 @@
-let imgCount = 1;
+let imgCount = 2;
 let votes = {};
+let tempImageIndex = 0;
+let images = [
+    'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FyfGVufDB8fDB8fHww',
+]
 
 document.addEventListener("DOMContentLoaded", function() {
     const smashButtons = document.querySelectorAll('.smash-btn');
     const passButtons = document.querySelectorAll('.pass-btn');
     const nextButton = document.querySelector('.next-btn');
+    const imageWala = document.querySelector('.imageClass')
+    imageWala.src = images[tempImageIndex]
 
     smashButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -30,12 +38,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    nextButton.addEventListener('click', changeImage);
 });
 
 function updateUI(imgSrc) {
     const item = document.querySelector('.item');
-    const voteDisplay = item.querySelector('.vote-display');
+    let voteDisplay = item.querySelector('.vote-display');
 
     if (!voteDisplay) {
         const newVoteDisplay = document.createElement('div');
@@ -43,7 +50,6 @@ function updateUI(imgSrc) {
         item.appendChild(newVoteDisplay);
         voteDisplay = newVoteDisplay;
     }
-
     voteDisplay.textContent = `Smash: ${votes[imgSrc].smash}, Pass: ${votes[imgSrc].pass}`;
     voteDisplay.classList.remove('hide');
 }
@@ -52,13 +58,11 @@ function changeImage(){
     document.querySelector('.next-btn').classList.add('hide');
     document.querySelector('.vote-display').classList.add('hide');
     var img = document.querySelector('.img');
+    console.log({"index": tempImageIndex})
 
-     if(imgCount === 2)
-     {
-         imgCount = 1;
-        
-    }
-     else imgCount++;
-    img.src = "./car-" + imgCount + ".jpg";
+     if(tempImageIndex == images.length - 1){
+        tempImageIndex = 0;
+     }
+    img.src = images[++tempImageIndex]
 
 }
