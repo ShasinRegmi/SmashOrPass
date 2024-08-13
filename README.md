@@ -1,0 +1,1 @@
+Practicing Js and Django
