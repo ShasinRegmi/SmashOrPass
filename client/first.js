@@ -10,7 +10,7 @@ let images = [
 document.addEventListener("DOMContentLoaded", function() {
     const smashButtons = document.querySelectorAll('.smash-btn');
     const passButtons = document.querySelectorAll('.pass-btn');
-    const nextButton = document.querySelector('.next-btn');
+    const nextButton = document.querySelector('.button-group');
     const imageWala = document.querySelector('.imageClass')
     imageWala.src = images[tempImageIndex]
 
@@ -20,9 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const imgSrc = img.src;
             votes[imgSrc] = votes[imgSrc] || { smash: 0, pass: 0 };
             votes[imgSrc].smash++;
-
             updateUI(imgSrc);
-            nextButton.classList.remove('hide');
+            
         });
     });
 
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             votes[imgSrc].pass++;
 
             updateUI(imgSrc);
-            nextButton.classList.remove('hide');
+            
         });
     });
 });
@@ -50,18 +49,19 @@ function updateUI(imgSrc) {
         voteDisplay = newVoteDisplay;
     }
     voteDisplay.textContent = `Smash: ${votes[imgSrc].smash}, Pass: ${votes[imgSrc].pass}`;
-    voteDisplay.classList.remove('hide');
+    
 }
 
 function changeImage(){
-    document.querySelector('.next-btn').classList.add('hide');
-    document.querySelector('.vote-display').classList.add('hide');
+    document.querySelector('.pass-btn');
+    document.querySelector('.smash-btn');
+    
     var img = document.querySelector('.img');
     console.log({"index": tempImageIndex})
 
      if(tempImageIndex == images.length - 1){
         tempImageIndex = 0;
      }
-    img.src = images[++tempImageIndex]
+    img.src = images[tempImageIndex++]
 
 }
