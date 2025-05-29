@@ -1,1 +1,1 @@
-Practicing Js and Django
+Practicing Js
